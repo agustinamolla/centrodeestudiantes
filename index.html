@@ -1,186 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Centro Estudiantil - EEST N°2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
-    <style>
-        /* Paleta y tipografía */
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            color: #fff;
-            background: linear-gradient(270deg, #6a11cb, #2575fc, #ff4b2b);
-            background-size: 600% 600%;
-            animation: gradientMove 10s ease infinite;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista Azul - EEST N°2</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        background: linear-gradient(270deg, #112BF0, #0D1C8F, #0E175C, #230E5C);
+        background-size: 600% 600%;
+        animation: gradientBG 15s ease infinite;
+    }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    @keyframes gradientBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
 
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 2.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #fff;
-            animation: bounceIn 1.5s ease;
-        }
+    header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(0,0,0,0.3);
+        border-bottom: 2px solid rgba(255,255,255,0.2);
+    }
 
-        @keyframes bounceIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            60% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); }
-        }
+    header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 50px;
-            margin: 10px auto;
-            width: fit-content;
-            animation: fadeIn 2s ease;
-        }
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-radius: 50px;
+        margin: 10px auto;
+        width: fit-content;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 20px;
-            transition: background 0.3s, transform 0.3s;
-        }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        transition: background 0.3s, transform 0.3s;
+    }
 
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.2);
-        }
+    nav a:hover {
+        background: rgba(255,255,255,0.3);
+        transform: scale(1.1);
+    }
 
-        section {
-            max-width: 900px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: fadeUp 1s ease;
-        }
+    section {
+        max-width: 900px;
+        margin: 40px auto;
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        animation: fadeIn 1s ease-in;
+    }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
 
-        section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2em;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-        }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
+    .integrantes p {
+        margin: 8px 0;
+        font-size: 1.1rem;
+    }
 
-        ul li {
-            margin: 10px 0;
-            background: rgba(255,255,255,0.15);
-            padding: 12px;
-            border-radius: 15px;
-            transition: transform 0.3s;
-        }
+    .propuestas {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-        ul li:hover {
-            transform: scale(1.05);
-            background: rgba(255,255,255,0.25);
-        }
+    .btn-propuesta {
+        display: block;
+        text-align: center;
+        padding: 15px;
+        background: #0E175C;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s, transform 0.3s;
+    }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            max-width: 600px;
-            margin: 40px auto;
-            animation: fadeUp 1.5s ease;
-        }
+    .btn-propuesta:hover {
+        background: #112BF0;
+        transform: scale(1.05);
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 14px 25px;
-            background: #ff4b2b;
-            color: white;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.4s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: rgba(0,0,0,0.3);
+        margin-top: 30px;
+        border-radius: 15px;
+    }
 
-        .btn:hover {
-            background: #ff6a00;
-            transform: scale(1.15) rotate(2deg);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-    </style>
+    footer a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background: #112BF0;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: background 0.3s, transform 0.3s;
+    }
+
+    footer a:hover {
+        background: #0D1C8F;
+        transform: scale(1.1);
+    }
+</style>
 </head>
 <body>
-    <header>
-        Lista del Centro Estudiantil<br>EEST N°2
-    </header>
 
-    <nav>
-        <a href="#integrantes">Integrantes</a>
-        <a href="#propuestas">Propuestas</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+<header>
+    <h1>Lista Azul - EEST N°2</h1>
+    <p>Escuela de Educación Secundaria Técnica N°2</p>
+</header>
 
-    <section id="integrantes">
-        <h2>Integrantes</h2>
-        <ul>
-            <li><strong>Presidente:</strong> Joan Lara, 4°P</li>
-            <li><strong>Vicepresidente:</strong> Agustina Molla, 4°P</li>
-            <li><strong>Secretaria:</strong> Micaela Gallina, 4°P</li>
-            <li><strong>Tesorera:</strong> Marcela Corvalán, 4°P</li>
-            <li><strong>Vocal 1:</strong> Sandro Calderón, 3°3</li>
-            <li><strong>Vocal 2:</strong> Branco Krekun, 2°1</li>
-            <li><strong>Vocal 3:</strong> Sabas Ferrari, 1°1</li>
-            <li><strong>Docente a cargo:</strong> Soledad Pérez</li>
-        </ul>
-    </section>
+<nav>
+    <a href="#integrantes">Integrantes</a>
+    <a href="#propuestas">Propuestas</a>
+    <a href="#contacto">Contacto</a>
+</nav>
 
-    <section id="propuestas">
-        <h2>Propuestas</h2>
-        <ul>
-            <li>🎉 Gala de fin de año</li>
-            <li>🚌 Parada de colectivo más cerca</li>
-            <li>🎨 Mural artístico con reciclaje</li>
-            <li>🌐 Página web estudiantil</li>
-            <li>🎵 Música en los recreos</li>
-            <li>👥 Representatividad en consejo</li>
-            <li>🏆 Torneos y concursos</li>
-            <li>📚 Apoyo escolar entre alumnos</li>
-            <li>💰 Uso responsable del dinero</li>
-        </ul>
-    </section>
+<section id="integrantes" class="integrantes">
+    <h2>Integrantes</h2>
+    <p><strong>Presidente:</strong> Joan Lara, 4°P</p>
+    <p><strong>Vicepresidente:</strong> Agustina Molla, 4°P</p>
+    <p><strong>Secretaria:</strong> Micaela Gallina, 4°P</p>
+    <p><strong>Tesorera:</strong> Marcela Corvalán, 4°P</p>
+    <p><strong>Vocal 1:</strong> Sandro Calderone, 3°3</p>
+    <p><strong>Vocal 2:</strong> Branco Krekun, 2°1</p>
+    <p><strong>Vocal 3:</strong> Sabas Ferrari, 1°1</p>
+    <p><strong>Docente a cargo:</strong> Soledad Pérez</p>
+</section>
 
-    <footer id="contacto">
-        <p>📞 Contacto: +54 9 2364 339042</p>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhO45EShsBe-hB1IIqvt7UkKn_amRSK2G03Ii9q6yI6NyuxQ/viewform?usp=sharing&ouid=111821596794346886846" target="_blank">¡Deja tu sugerencia aquí!</a>
-    </footer>
+<section id="propuestas">
+    <h2>Propuestas</h2>
+    <div class="propuestas">
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/1xG-m_33PyIpO7SusGseBxFBsDnsPgoCdBLglC07WuMg/edit?usp=sharing" target="_blank">🎉 Gala de Fin de Año</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/11wQDwXk6XX63hKQoTrhmuTrqt___dRlsY3hWTZ42Aus/edit?usp=sharing" target="_blank">🚌 Parada de Colectivo</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/11lMlSAvbAYcKfyWVU3VpI9aTRdIEHEl65Ui9aYwN_0k/edit?usp=sharing" target="_blank">🎨 Mural Artístico</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/1tQDATEBMZdPSe5UrezL02Bf2ReBv5MikMsmxLQZ0kWU/edit?usp=sharing" target="_blank">💻 Página Web</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/1joiH-u9kWtQsVo4Nwa-VCKKOnvg6dgl8OLUD4tuY1vA/edit?usp=sharing" target="_blank">🎶 Música en los Recreos</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/1LJGo71vUb5ZwA1K_l_75LDTJ-C1cj8n4NEt-FwsieK8/edit?usp=sharing" target="_blank">🏆 Torneos</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/1nAGDOE-qthS07UkmNreNWxrxHnwKvFL_-Ijj4DUnKNI/edit?usp=sharing" target="_blank">📚 Apoyo Escolar</a>
+        <a class="btn-propuesta" href="https://docs.google.com/document/d/1UnP7qSM0JfSMkMFBDilIsKLBFdMbc07Uy7FvPD4AZq8/edit?usp=sharing" target="_blank">💰 Objetivos con el Dinero Recaudado</a>
+    </div>
+</section>
+
+<footer id="contacto">
+    <h2>Contacto</h2>
+    <p>Teléfono: +54 9 2364 339042</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhO45EShsBe-hB1IIqvt7UkKn_amRSK2G03Ii9q6yI6NyuxQ/viewform?usp=sharing&ouid=111821596794346886846" target="_blank">
+        Deja tu sugerencia o pregunta acá
+    </a>
+</footer>
+
 </body>
 </html>
