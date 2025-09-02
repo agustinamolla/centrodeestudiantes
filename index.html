@@ -1,208 +1,348 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Centro Estudiantil - EEST N°2</title>
-    <style>
-        /* Paleta de colores */
-        :root {
-            --color1: #112BF0;
-            --color2: #0D1C8F;
-            --color3: #0E175C;
-            --color4: #230E5C;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Azul - EEST N°2</title>
+  <style>
+    /* Paleta de colores */
+    :root {
+      --primary: #112BF0;
+      --primary-dark: #0D1C8F;
+      --primary-medium: #0E175C;
+      --accent: #230E5C;
+      --light: #ffffff;
+    }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--color3);
-            color: #fff;
-            overflow-x: hidden;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
 
-        header {
-            background-color: var(--color4);
-            padding: 20px;
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-            animation: fadeInDown 1s ease-in-out;
-        }
+    body {
+      background: linear-gradient(to bottom right, #f8fafc, #e0e7ff);
+      color: #333;
+    }
 
-        nav {
-            background-color: var(--color2);
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-        }
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            position: relative;
-            transition: color 0.3s;
-        }
+    nav.scrolled {
+      background: rgba(13, 28, 143, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background: var(--color1);
-            left: 0;
-            bottom: -5px;
-            transition: width 0.3s;
-        }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--light);
+    }
 
-        nav a:hover::after {
-            width: 100%;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-        section {
-            padding: 40px;
-            max-width: 900px;
-            margin: auto;
-            background-color: var(--color4);
-            margin-top: 30px;
-            border-radius: 12px;
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-        }
+    nav ul li a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-        section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    nav ul li a:hover {
+      color: #c7d2fe;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: var(--light);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 20px;
+    }
 
-        ul li {
-            margin-bottom: 10px;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: var(--color2);
-            margin-top: 40px;
-            font-size: 1.2em;
-        }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #dbeafe;
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            background-color: var(--color1);
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, background-color 0.3s;
-        }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      font-style: italic;
+      color: #c7d2fe;
+    }
 
-        .btn:hover {
-            transform: scale(1.1);
-            background-color: #0A23C8;
-        }
+    .hero button {
+      background: var(--light);
+      color: var(--primary-dark);
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        /* Animaciones */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .hero button:hover {
+      background: #f0f4ff;
+      transform: scale(1.05);
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* Secciones */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        /* Aparece cuando haces scroll */
-        .visible {
-            opacity: 1 !important;
-        }
-    </style>
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      margin: 10px auto 30px;
+    }
+
+    /* Integrantes */
+    .integrantes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .integrante-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .integrante-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .integrante-card .avatar {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* Propuestas */
+    .propuestas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .propuesta-card {
+      background: #fff;
+      border-left: 5px solid var(--primary);
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .propuesta-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Contacto */
+    .contacto {
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .contacto a {
+      display: inline-block;
+      background: #fff;
+      color: var(--primary-dark);
+      padding: 15px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .contacto a:hover {
+      background: #f0f4ff;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: #c7d2fe;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        Lista del Centro Estudiantil - EEST N°2
-    </header>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="logo">EEST N°2</div>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#integrantes">Integrantes</a></li>
+      <li><a href="#propuestas">Propuestas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <a href="#integrantes">Integrantes</a>
-        <a href="#propuestas">Propuestas</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <h1>Lista Azul</h1>
+    <h2>EEST N°2</h2>
+    <p>Compromiso, participación y cambio</p>
+    <button onclick="document.getElementById('integrantes').scrollIntoView({behavior:'smooth'})">
+      Conoce nuestro equipo
+    </button>
+  </section>
 
-    <section id="integrantes">
-        <h2>Integrantes</h2>
-        <ul>
-            <li><strong>Presidente:</strong> Joan Lara, 4°P</li>
-            <li><strong>Vicepresidente:</strong> Agustina Molla, 4°P</li>
-            <li><strong>Secretaria:</strong> Micaela Gallina, 4°P</li>
-            <li><strong>Tesorera:</strong> Marcela Corvalán, 4°P</li>
-            <li><strong>Vocal 1:</strong> Sandro Calderón, 3°3</li>
-            <li><strong>Vocal 2:</strong> Branco Krekun, 2°1</li>
-            <li><strong>Vocal 3:</strong> Sabas Ferrari, 1°1</li>
-            <li><strong>Docente a cargo:</strong> Soledad Pérez</li>
-        </ul>
-    </section>
+  <!-- Integrantes -->
+  <section id="integrantes">
+    <h2>Nuestro Equipo</h2>
+    <div class="divider"></div>
+    <div class="integrantes-grid">
+      <div class="integrante-card">
+        <div class="avatar">JL</div>
+        <h3>Joan Lara</h3>
+        <p>Presidente - 4°P</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">AM</div>
+        <h3>Agustina Molla</h3>
+        <p>Vicepresidente - 4°P</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">MG</div>
+        <h3>Micaela Gallina</h3>
+        <p>Secretaria - 4°P</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">MC</div>
+        <h3>Marcela Corvalán</h3>
+        <p>Tesorera - 4°P</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">SC</div>
+        <h3>Sandro Calderón</h3>
+        <p>Vocal 1 - 3°3</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">BK</div>
+        <h3>Branco Krekun</h3>
+        <p>Vocal 2 - 2°1</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">SF</div>
+        <h3>Sabas Ferrari</h3>
+        <p>Vocal 3 - 1°1</p>
+      </div>
+      <div class="integrante-card">
+        <div class="avatar">SP</div>
+        <h3>Soledad Pérez</h3>
+        <p>Docente a cargo</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="propuestas">
-        <h2>Propuestas</h2>
-        <ul>
-            <li><strong>Gala de fin de año:</strong> Evento de recaudación y visibilización organizado por alumnos.</li>
-            <li><strong>Parada de colectivo:</strong> Solicitud al gobierno para acercar la parada y organizar recorridos.</li>
-            <li><strong>Mural artístico:</strong> Proyecto de mural combinado con reciclaje.</li>
-            <li><strong>Página web:</strong> Plataforma para mostrar información útil.</li>
-            <li><strong>Música en los recreos:</strong> Formulario para sugerir canciones.</li>
-            <li><strong>Representatividad:</strong> Incorporar la institución al consejo estudiantil.</li>
-            <li><strong>Torneos:</strong> Eventos deportivos, artísticos y de juegos con premios.</li>
-            <li><strong>Apoyo escolar:</strong> Programa de tutorías entre alumnos y docentes.</li>
-            <li><strong>Uso del dinero:</strong> Reponer insumos de la escuela.</li>
-        </ul>
-    </section>
+  <!-- Propuestas -->
+  <section id="propuestas">
+    <h2>Nuestras Propuestas</h2>
+    <div class="divider"></div>
+    <div class="propuestas-grid">
+      <div class="propuesta-card">1. Gala de fin de año</div>
+      <div class="propuesta-card">2. Parada de colectivo</div>
+      <div class="propuesta-card">3. Mural artístico</div>
+      <div class="propuesta-card">4. Página web</div>
+      <div class="propuesta-card">5. Música en los recreos</div>
+      <div class="propuesta-card">6. Representación en consejo estudiantil</div>
+      <div class="propuesta-card">7. Torneos</div>
+      <div class="propuesta-card">8. Apoyo escolar</div>
+      <div class="propuesta-card">9. Objetivos con dinero recaudado</div>
+    </div>
+  </section>
 
-    <footer id="contacto">
-        <p>Contacto: +54 9 2364 339042</p>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhO45EShsBe-hB1IIqvt7UkKn_amRSK2G03Ii9q6yI6NyuxQ/viewform?usp=sharing&ouid=111821596794346886846" target="_blank">Deja tu sugerencia o pregunta aquí</a>
-    </footer>
+  <!-- Contacto -->
+  <section id="contacto">
+    <div class="contacto">
+      <h2>Contacto</h2>
+      <div class="divider" style="background:#fff;"></div>
+      <p style="margin:15px 0;font-size:1.2rem;">📱 +54 9 2364 33 9042</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhO45EShsBe-hB1IIqvt7UkKn_amRSK2G03Ii9q6yI6NyuxQ/viewform?usp=sharing" target="_blank">
+        Dejá tu sugerencia o pregunta acá
+      </a>
+      <p style="margin-top:20px;font-size:0.9rem;">Este proyecto pertenece a la <strong>EEST N°2</strong></p>
+    </div>
+  </section>
 
-    <script>
-        // Animación al hacer scroll
-        const sections = document.querySelectorAll("section");
-        const options = {
-            threshold: 0.1
-        };
+  <!-- Footer -->
+  <footer>
+    © 2024 Lista del Centro Estudiantil - EEST N°2. 
+  </footer>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, options);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
