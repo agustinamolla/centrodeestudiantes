@@ -3,122 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Estudiantes</title>
+    <title>Lista Centro Estudiantil - EEST N°2</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Paleta de colores */
+        :root {
+            --color1: #112BF0;
+            --color2: #0D1C8F;
+            --color3: #0E175C;
+            --color4: #230E5C;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--color3);
+            color: #fff;
             overflow-x: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
+        header {
+            background-color: var(--color4);
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            animation: fadeInDown 1s ease-in-out;
         }
 
-        .nav-menu {
+        nav {
+            background-color: var(--color2);
             display: flex;
-            list-style: none;
-            gap: 2rem;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
         }
 
-        .nav-link {
+        nav a {
             color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            font-size: 1.2em;
             position: relative;
-            overflow: hidden;
+            transition: color 0.3s;
         }
 
-        .nav-link:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 12rem 2rem 8rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
+        nav a::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
-            animation: float 20s ease-in-out infinite;
+            width: 0;
+            height: 3px;
+            background: var(--color1);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(30px, -30px) rotate(180deg); }
+        nav a:hover::after {
+            width: 100%;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+        section {
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+            background-color: var(--color4);
+            margin-top: 30px;
+            border-radius: 12px;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
+        section h2 {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
+        ul {
+            list-style: none;
+            padding: 0;
         }
 
-        @keyframes fadeInUp {
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--color2);
+            margin-top: 40px;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: var(--color1);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #0A23C8;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
@@ -126,483 +123,86 @@
             }
         }
 
-        .btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.6);
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .propuestas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .propuesta-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .propuesta-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-
-        .propuesta-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .propuesta-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .info-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            margin: 5rem 0;
-            padding: 0;
-        }
-
-        .info-content {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: scale(1.05);
-            background: rgba(255,255,255,0.2);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .social-link {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 50px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .mobile-menu {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero {
-                padding: 10rem 1rem 6rem;
-            }
-            
-            .section {
-                padding: 3rem 1rem;
-            }
-            
-            .propuestas-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .noticias-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .noticia-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .noticia-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .noticia-image {
-            height: 200px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .noticia-content {
-            padding: 1.5rem;
-        }
-
-        .noticia-date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+        /* Aparece cuando haces scroll */
+        .visible {
+            opacity: 1 !important;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">
-                🔵 Lista Azul
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#propuestas" class="nav-link">Propuestas</a></li>
-                    <li><a href="#integrantes" class="nav-link">Integrantes</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-                <button class="mobile-menu">☰</button>
-            </nav>
-        </div>
+    <header>
+        Lista del Centro Estudiantil - EEST N°2
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Lista Azul</h1>
-            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; opacity: 0.9; font-weight: normal;">Escuela de Educación Secundaria Técnica N°2 - Junín</h2>
-            <p>Tu voz, nuestro compromiso. Trabajamos por una escuela mejor para todos</p>
-            <a href="#propuestas" class="btn">Conocé nuestras propuestas</a>
-        </div>
+    <nav>
+        <a href="#integrantes">Integrantes</a>
+        <a href="#propuestas">Propuestas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section id="integrantes">
+        <h2>Integrantes</h2>
+        <ul>
+            <li><strong>Presidente:</strong> Joan Lara, 4°P</li>
+            <li><strong>Vicepresidente:</strong> Agustina Molla, 4°P</li>
+            <li><strong>Secretaria:</strong> Micaela Gallina, 4°P</li>
+            <li><strong>Tesorera:</strong> Marcela Corvalán, 4°P</li>
+            <li><strong>Vocal 1:</strong> Sandro Calderón, 3°3</li>
+            <li><strong>Vocal 2:</strong> Branco Krekun, 2°1</li>
+            <li><strong>Vocal 3:</strong> Sabas Ferrari, 1°1</li>
+            <li><strong>Docente a cargo:</strong> Soledad Pérez</li>
+        </ul>
     </section>
 
-    <section id="propuestas" class="section">
-        <h2 class="section-title fade-in">Nuestras Propuestas</h2>
-        <div class="propuestas-grid">
-            <div class="propuesta-card fade-in">
-                <h3>🎭 Gala de Fin de Año</h3>
-                <p>Un evento de recaudación y visibilización organizado por alumnos para toda la comunidad educativa, celebrando los logros del año.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>🚌 Parada de Colectivo</h3>
-                <p>Gestionar con el gobierno local una parada más cercana a la escuela. Realizaremos encuestas demográficas y propondremos ubicaciones estratégicas.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>🎨 Mural Artístico</h3>
-                <p>Combinamos arte y sustentabilidad con un mural creado por estudiantes artistas usando materiales reciclados.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>💻 Página Web Escolar</h3>
-                <p>Desarrollada por nuestros propios estudiantes, mostrará información importante como mesas de previas, menú diario y más.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>🎵 Música en los Recreos</h3>
-                <p>Sistema de sugerencias musicales donde toda la comunidad puede proponer canciones para amenizar los recreos.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>🏛️ Consejo Estudiantil</h3>
-                <p>Representar a nuestra institución en el consejo estudiantil de Junín para que nuestros intereses sean escuchados.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>🏆 Torneos Diversos</h3>
-                <p>Competencias deportivas, de dibujo y juegos de mesa con premios para fomentar la participación estudiantil.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>📚 Apoyo Escolar</h3>
-                <p>Programa de tutorías donde estudiantes avanzados y profesores ayuden a quienes necesiten asistencia académica.</p>
-            </div>
-            <div class="propuesta-card fade-in">
-                <h3>💰 Inversión Responsable</h3>
-                <p>Los fondos recaudados se destinarán a papel higiénico, kits de emergencia de preceptoría y materiales para biblioteca.</p>
-            </div>
-        </div>
+    <section id="propuestas">
+        <h2>Propuestas</h2>
+        <ul>
+            <li><strong>Gala de fin de año:</strong> Evento de recaudación y visibilización organizado por alumnos.</li>
+            <li><strong>Parada de colectivo:</strong> Solicitud al gobierno para acercar la parada y organizar recorridos.</li>
+            <li><strong>Mural artístico:</strong> Proyecto de mural combinado con reciclaje.</li>
+            <li><strong>Página web:</strong> Plataforma para mostrar información útil.</li>
+            <li><strong>Música en los recreos:</strong> Formulario para sugerir canciones.</li>
+            <li><strong>Representatividad:</strong> Incorporar la institución al consejo estudiantil.</li>
+            <li><strong>Torneos:</strong> Eventos deportivos, artísticos y de juegos con premios.</li>
+            <li><strong>Apoyo escolar:</strong> Programa de tutorías entre alumnos y docentes.</li>
+            <li><strong>Uso del dinero:</strong> Reponer insumos de la escuela.</li>
+        </ul>
     </section>
 
-    <section id="integrantes" class="section">
-        <h2 class="section-title fade-in">Nuestros Integrantes</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem; text-align: center;">
-                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Lista Azul 2025</h3>
-                <p style="font-size: 1.2rem;">Comprometidos con el cambio y la mejora de nuestra escuela</p>
-            </div>
-            
-            <div class="propuestas-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">👑 Presidente</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Joan Lara</p>
-                    <p style="color: #666; font-size: 0.9rem;">4°P</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">👥 Vicepresidenta</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Agustina Molla</p>
-                    <p style="color: #666; font-size: 0.9rem;">4°P</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">📝 Secretaria</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Micaela Gallina</p>
-                    <p style="color: #666; font-size: 0.9rem;">4°P</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">💰 Tesorera</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Marcela Corvalán</p>
-                    <p style="color: #666; font-size: 0.9rem;">4°P</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">🗣️ Vocal 1</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Sandro Calderón</p>
-                    <p style="color: #666; font-size: 0.9rem;">3°3</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">🗣️ Vocal 2</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Branco Krekun</p>
-                    <p style="color: #666; font-size: 0.9rem;">2°1</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center;">
-                    <h3 style="color: #667eea; font-size: 1.1rem;">🗣️ Vocal 3</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0;">Sabas Ferrari</p>
-                    <p style="color: #666; font-size: 0.9rem;">1°1</p>
-                </div>
-                
-                <div class="propuesta-card fade-in" style="text-align: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
-                    <h3 style="color: white; font-size: 1.1rem;">👩‍🏫 Docente a cargo</h3>
-                    <p style="font-weight: bold; margin: 0.5rem 0; color: white;">Soledad Pérez</p>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Profesora</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <footer id="contacto" class="footer">
-        <h3>Contactá a la Lista Azul</h3>
-        <p>¿Tenés alguna consulta o querés apoyar nuestras propuestas? ¡Hablemos!</p>
-        
-        <div style="margin: 2rem 0; font-size: 1.2rem;">
-            <p style="margin-bottom: 0.5rem;">📞 Teléfono:</p>
-            <p style="font-size: 1.4rem; font-weight: bold; color: #4a90e2;">+54 9 2364 339042</p>
-        </div>
-        
-        <p>Trabajando por una escuela mejor para todos 🔵</p>
+    <footer id="contacto">
+        <p>Contacto: +54 9 2364 339042</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhO45EShsBe-hB1IIqvt7UkKn_amRSK2G03Ii9q6yI6NyuxQ/viewform?usp=sharing&ouid=111821596794346886846" target="_blank">Deja tu sugerencia o pregunta aquí</a>
     </footer>
 
     <script>
-        // Smooth scrolling para los enlaces de navegación
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Animaciones al hacer scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+        // Animación al hacer scroll
+        const sections = document.querySelectorAll("section");
+        const options = {
+            threshold: 0.1
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                if(entry.isIntersecting){
+                    entry.target.classList.add("visible");
                 }
             });
-        }, observerOptions);
+        }, options);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+        sections.forEach(section => {
+            observer.observe(section);
         });
-
-        // Efecto de parallax suave en el hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Animación de las tarjetas al hacer hover
-        document.querySelectorAll('.propuesta-card, .noticia-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Contador animado para las estadísticas
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.innerText.replace(',', ''));
-                const increment = target / 100;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.innerText = target.toLocaleString();
-                        clearInterval(timer);
-                    } else {
-                        counter.innerText = Math.floor(current).toLocaleString();
-                    }
-                }, 20);
-            });
-        }
-
-        // Activar contador cuando la sección sea visible
-        const statsSection = document.querySelector('.info-section');
-        if (statsSection) {
-            const statsObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    animateCounters();
-                    statsObserver.disconnect();
-                }
-            });
-            statsObserver.observe(statsSection);
-        }
     </script>
 </body>
 </html>
